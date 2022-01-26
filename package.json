@@ -1,0 +1,13 @@
+{
+  "name": "salesforce-design-patterns",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Salesforce App",
+  "scripts": {
+    "test": "npm run test:unit"
+  },
+  "devDependencies": {
+    "@prettier/plugin-xml": "^0.13.1",
+    "@salesforce/sfdx-lwc-jest": "^0.13.0"
+  }
+}
