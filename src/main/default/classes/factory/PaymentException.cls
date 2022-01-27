@@ -1,3 +1,1 @@
-public with sharing class PaymentException extends Exception {
-
-}
+public with sharing class PaymentException extends Exception {}

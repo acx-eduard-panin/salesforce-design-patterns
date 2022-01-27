@@ -48,17 +48,27 @@ public with sharing class FactoryMethod {
      *  added, we need to add a condition to PaymentFactory.
      */
     public static void step3(String supportType) {
-        IPayment support = PaymentFactory.getInstanceWrong(supportType);
+        IPayment support = PaymentFactory.getInstanceMTD(supportType);
 
         support.pay();
+    }
+
+    /**
+     *  Inspecting classes, methods, and variables at runtime without knowing a class name, or
+     *instantiating a new object and invoking methods at runtime is known as reflection in
+     *computer science.
+     */
+    public static void step4(String supportType) {
+        IPayment payment = PaymentFactory.getInstanceMTD(supportType);
+        payment.pay();
     }
 
     /**
      *  The problem with the preceding design is that whenever a new support type needs to be
      *  added, we need to add a condition to PaymentFactory.
      */
-    public static void step4(String supportType) {
-        IPayment payment = PaymentFactory.getInstance(supportType);
+    public static void step5(String supportType) {
+        IPayment payment = PaymentFactory.getInstanceDynamicQuery(supportType);
         payment.pay();
     }
 }

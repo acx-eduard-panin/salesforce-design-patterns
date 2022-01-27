@@ -1,16 +1,42 @@
 public with sharing class PaymentFactory {
+    private static final String INTERFACE_NAME = 'implements IPayment';
+    private static final String NO_REALIZATION = 'This type does not have realization of payment process';
     /**
      * Reflection in Apex
      */
-    public static IPayment getInstance(String supportType) {
+    public static IPayment getInstanceMTD(String supportType) {
         Map<String, String> mapping = getPaymentMapping();
         if (!mapping.containsKey(supportType)) {
-            throw new PaymentException('this method does not have realisation of payment process');
+            throw new PaymentException(NO_REALIZATION);
         }
 
         Type paymentType = Type.forName(mapping.get(supportType));
 
         return (IPayment)paymentType.newInstance();
+    }
+
+    /**
+    * Dynamic classes Apex
+    */
+    public static IPayment getInstanceDynamicQuery(String supportType) {
+        List<ApexClass> classes = (List<ApexClass>)[FIND :INTERFACE_NAME IN ALL FIELDS RETURNING ApexClass(Name)][0];
+        for (ApexClass apexClass : classes) {
+            Type paymentType = Type.forName(apexClass.Name);
+            if (paymentType == null) {
+                continue;
+            }
+            IPayment payment;
+            try {
+                payment = (IPayment) paymentType.newInstance();
+            } catch (TypeException ex) {
+                continue;
+            }
+            if (payment.getType() == supportType) {
+                return payment;
+            }
+        }
+
+        throw new PaymentException(NO_REALIZATION);
     }
 
     private static Map<String, String> getPaymentMapping() {
@@ -22,7 +48,7 @@ public with sharing class PaymentFactory {
         return result;
     }
 
-    public static IPayment getInstanceWrong(String supportType) {
+    public static IPayment getInstanceSimple(String supportType) {
         IPayment support = null;
 
         switch on supportType {
@@ -42,5 +68,4 @@ public with sharing class PaymentFactory {
 
         return support;
     }
-
 }
