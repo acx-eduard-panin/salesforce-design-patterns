@@ -1,5 +1,5 @@
 public with sharing class InterpreterTest {
-    public static void test() {
+    public static void testScript() {
         Map<String, Object> context = new Map<String, Object>{
                 'a' => 'Foo',
                 'b' => 2
