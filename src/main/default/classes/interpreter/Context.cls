@@ -12,8 +12,6 @@ public with sharing class Context {
             if (parts[pos].isNumeric()) {
                 pos --;
             } else {
-                System.debug(parts[pos] == '|');
-                System.debug(parts[pos]);
                 Expression left = evaluate(currentInput.substring(0, pos), values);
                 Expression right = new NumberExpression(currentInput.substring(pos+1, currentInput.length()), values);
                 switch on parts[pos] {
