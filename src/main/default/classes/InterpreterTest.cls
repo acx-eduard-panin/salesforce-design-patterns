@@ -9,4 +9,9 @@ public with sharing class InterpreterTest {
         System.debug(result);
     }
 
+    public static void testInterpreter() {
+        Context context = new Context();
+        Expression expression = context.evaluate('1 | 2 & 3', new List<String>{'Name = \'test\'', 'Account.Name = \'test\'', 'Foo = \'test\''});
+        System.debug(expression.interpret());
+    }
 }
