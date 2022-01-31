@@ -14,7 +14,6 @@ public with sharing class FactoryMethod {
             CashPayment support = new CashPayment();
             support.pay();
         }
-
     }
 
     /**
@@ -48,7 +47,7 @@ public with sharing class FactoryMethod {
      *  added, we need to add a condition to PaymentFactory.
      */
     public static void step3(String supportType) {
-        IPayment support = PaymentFactory.getInstanceMTD(supportType);
+        IPayment support = PaymentFactory.getInstanceSimple(supportType);
 
         support.pay();
     }
