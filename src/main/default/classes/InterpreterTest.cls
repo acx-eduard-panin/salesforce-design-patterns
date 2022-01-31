@@ -1,4 +1,4 @@
-public with sharing class Interpreter {
+public with sharing class InterpreterTest {
     public static void test() {
         Map<String, Object> context = new Map<String, Object>{
                 'a' => 'Foo',

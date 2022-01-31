@@ -1,4 +1,4 @@
-public with sharing class FactoryMethod {
+public with sharing class FactoryMethodTest {
     //wrong
     public static void step1(String supportType) {
         if (supportType == 'ATM') {
