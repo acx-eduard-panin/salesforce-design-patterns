@@ -42,7 +42,8 @@ public class BuilderTest {
                 Name = 'Test Opportunity Test',
                 CloseDate = Date.today().addDays(7),
                 StageName = 'Prospecting',
-                AccountId = account.Id
+                AccountId = account.Id,
+                OwnerId =u.Id
         ) ;
         insert opp;
 
@@ -52,6 +53,6 @@ public class BuilderTest {
                 WHERE Id = :opp.Id
         ];
 
-        System.assertEquals(site, oppInserted.Account.Site) ;
+        System.assertEquals(site, oppInserted.Account.Site);
     }
 }

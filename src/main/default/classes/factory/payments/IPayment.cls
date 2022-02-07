@@ -1,4 +1,4 @@
 public interface IPayment {
-    void pay() ;
-    String getType() ;
+    void pay();
+    String getType();
 }

@@ -32,7 +32,7 @@ Interpreter pattern is used to defines a grammatical representation for a langua
 
 Examples:
 </br>
+- [Interpreter Test](https://github.com/acx-eduard-panin/salesforce-design-patterns/blob/main/src/main/default/classes/InterpreterTest.cls)
 - [Script](https://github.com/PropicSignifi/Script.apex)
-- [Apex-query-builder](https://github.com/4an70m/apex-query-builder)
 
 

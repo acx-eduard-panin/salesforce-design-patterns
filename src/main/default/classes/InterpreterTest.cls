@@ -4,7 +4,7 @@ public with sharing class InterpreterTest {
                 'a' => 'Foo',
                 'b' => 2
         };
-        Object result = ScriptEngine.getInstance().eval(' true ? "one" : "Two"');
+        Object result = ScriptEngine.getInstance().eval(' false ? a : b', context);
 
         System.debug(result);
     }
